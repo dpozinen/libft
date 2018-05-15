@@ -17,6 +17,7 @@
 # include <stdarg.h>
 
 # define MALCHK(x) if (!x) return (0);
+# define RDCHK(x) if (x < 0) return (0);
 
 typedef enum		e_length
 {
