@@ -47,9 +47,7 @@ typedef struct		s_argument_attributes
 }					t_attr;
 
 int					execute_printf(va_list *arguments, char *format);
-
 char				*make_unicode(va_list *arg, t_attr *t_arg, char *ret_s);
-
 char				*ft_itoa_long(intmax_t i, t_attr *t_arg, char *s);
 char				*to_base(uintmax_t n, int base, t_attr *t_arg, char *str);
 char				*ft_insert_string(char *s2, char *s1, int where);
