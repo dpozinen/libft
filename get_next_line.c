@@ -64,6 +64,8 @@ int		get_next_line(int fd, char **line)
 		tmp = t->content;
 		t->content = ft_strjoin(t->content, buf);
 		free(tmp);
+		if (ft_strchr(buf, '\n'))
+			break ;
 	}
 	if (!ft_strlen(t->content))
 		return (0);
