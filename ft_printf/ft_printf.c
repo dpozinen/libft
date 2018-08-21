@@ -17,6 +17,8 @@ int		ft_printf(const char *format, ...)
 	va_list	arguments;
 	int		ret;
 
+	if (!format)
+		return (0);
 	va_start(arguments, format);
 	ret = execute_printf(&arguments, (char*)format);
 	va_end(arguments);
