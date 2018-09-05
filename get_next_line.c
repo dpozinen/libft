@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-t_list	*find_list(int fd, t_list **head)
+static t_list	*find_list(int fd, t_list **head)
 {
 	t_list *t;
 
@@ -29,7 +29,7 @@ t_list	*find_list(int fd, t_list **head)
 	return (t);
 }
 
-char	*make_both(char *content, char **line)
+static char		*make_both(char *content, char **line)
 {
 	char	*nl;
 	int		after_nl_size;
@@ -47,7 +47,7 @@ char	*make_both(char *content, char **line)
 	return (content);
 }
 
-int		get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	static t_list	*head;
 	t_list			*t;
@@ -55,9 +55,9 @@ int		get_next_line(int fd, char **line)
 	char			buf[BUFF_SIZE + 1];
 	char			*tmp;
 
-	if (!line || fd < 0 || !(t = find_list(fd, &head)) || read(fd, buf, 0) < 0)
+	if (!line || fd < 0 || fd >= 8192
+		|| !(t = find_list(fd, &head)) || read(fd, buf, 0) < 0)
 		return (-1);
-	bytes = 0;
 	while ((bytes = read(fd, buf, BUFF_SIZE)))
 	{
 		buf[bytes] = '\0';
