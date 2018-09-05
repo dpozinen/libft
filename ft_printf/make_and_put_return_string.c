@@ -72,8 +72,7 @@ char	*make_ret_s(va_list *arg, t_attr *t_arg, int chars_put)
 		*n = chars_put;
 		return (0);
 	}
-	if (!(ret_s = ft_strnew(4)))
-		return (0);
+	MALCHK((ret_s = ft_strnew(4)));
 	c = t_arg->sp;
 	if (c == 'i' || c == 'd' || c == 'D')
 		ret_s = ft_itoa_long(va_arg(*arg, intmax_t), t_arg, ret_s);
@@ -84,7 +83,7 @@ char	*make_ret_s(va_list *arg, t_attr *t_arg, int chars_put)
 	else if (c == 'U' || c == 'u')
 		ret_s = to_base(va_arg(*arg, uintmax_t), 10, t_arg, ret_s);
 	else if (c == 'b')
-		ret_s = to_base(va_arg(*arg, uintmax_t), 2, t_arg, ret_s);		
+		ret_s = to_base(va_arg(*arg, uintmax_t), 2, t_arg, ret_s);
 	else
 		return (ret_s = make_ret_s_chars(arg, t_arg, ret_s));
 	return (ret_s = apply_all_options(ret_s, t_arg));
